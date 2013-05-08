@@ -1,5 +1,8 @@
 <?php 
-App::import('Core', array('AppModel', 'Model'));
+
+App::uses('Model', 'Model');
+App::uses('AppModel', 'Model');
+
 class ActivityProviderBehaviorTest extends CakeTestCase {
   var $Issue = null;
   var $data = null;
