@@ -26,12 +26,12 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 			'EnabledModule', 'Role', 'Member', 'Changeset', 'ChangesetsIssue','Watcher',
 			'Token','UserPreference'
 		);
-		$this->Issue =& ClassRegistry::init('Issue');
+		$this->Issue = ClassRegistry::init('Issue');
 		$this->data = $this->Issue->read(null, 1);
 	}
 
 	public function testActivityWithoutSubprojects() {
-		$User =& ClassRegistry::init('User');
+		$User = ClassRegistry::init('User');
 		$user = $User->find_by_id_logged(2);
 
 		$events = $this->Issue->find_events('issues', $user, false, false, array('project' => $this->data['Project']));
@@ -43,7 +43,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 	}
 
 	public function testActivityWithSubprojects() {
-		$User =& ClassRegistry::init('User');
+		$User = ClassRegistry::init('User');
 		$user = $User->find_by_id_logged(2);
 
 		$events = $this->Issue->find_events('issues', $user, false, false, array('project' => $this->data['Project'], 'with_subprojects' => 1));
@@ -59,7 +59,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 	}
 
 	public function testGlobalActivity() {
-		$User =& ClassRegistry::init('User');
+		$User = ClassRegistry::init('User');
 		$user = $User->find_by_id_logged(2);
 
 		$events = $this->Issue->find_events('issues', $user, false, false, array());
