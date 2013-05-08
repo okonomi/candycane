@@ -36,10 +36,10 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 
 		$events = $this->Issue->find_events('issues', $user, false, false, array('project' => $this->data['Project']));
 		$this->assertNotNull($events);
-		$this->assertTrue(in_array(1, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(2, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(3, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(7, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
+		$this->assertTrue(in_array(1, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(2, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(3, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(7, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
 	}
 
 	public function testActivityWithSubprojects() {
@@ -49,13 +49,13 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 		$events = $this->Issue->find_events('issues', $user, false, false, array('project' => $this->data['Project'], 'with_subprojects' => 1));
 		$this->assertNotNull($events);
 
-		$this->assertTrue(in_array(1, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(2, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(3, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(7, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
+		$this->assertTrue(in_array(1, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(2, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(3, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(7, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
 		// subproject issue
-		$this->assertTrue(in_array(5, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(6, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
+		$this->assertTrue(in_array(5, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(6, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
 	}
 
 	public function testGlobalActivity() {
@@ -65,13 +65,13 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
 		$events = $this->Issue->find_events('issues', $user, false, false, array());
 
 		// Issue of a private project
-		$this->assertTrue(in_array(1, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(2, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(3, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(4, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(5, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(6, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
-		$this->assertTrue(in_array(7, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
+		$this->assertTrue(in_array(1, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(2, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(3, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(4, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(5, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(6, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
+		$this->assertTrue(in_array(7, Hash::flatten(Hash::extract($events, '{n}.{n}.{n}.Issue.id'))));
 	}
 
 /*
