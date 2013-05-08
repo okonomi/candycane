@@ -1,6 +1,6 @@
 <?php 
 App::import('Core', array('AppModel', 'Model'));
-class ActivityProviderTest extends CakeTestCase {
+class ActivityProviderBehaviorTest extends CakeTestCase {
   var $Issue = null;
   var $data = null;
   var $autoFixtures = false;
