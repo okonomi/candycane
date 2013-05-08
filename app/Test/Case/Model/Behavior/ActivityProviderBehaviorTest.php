@@ -4,10 +4,10 @@ App::uses('Model', 'Model');
 App::uses('AppModel', 'Model');
 
 class ActivityProviderBehaviorTest extends CakeTestCase {
-  var $Issue = null;
-  var $data = null;
-  var $autoFixtures = false;
-  var $fixtures = array(
+  public $Issue = null;
+  public $data = null;
+  public $autoFixtures = false;
+  public $fixtures = array(
       'app.issue', 'app.project', 'app.tracker', 'app.issue_status', 'app.user', 'app.version',
       'app.enumeration', 'app.issue_category', 'app.token', 'app.member', 'app.role', 'app.user_preference',
       'app.enabled_module', 'app.time_entry', 'app.changeset', 'app.changesets_issue', 'app.attachment',
@@ -15,7 +15,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
       'app.wiki', 'app.wiki_page', 'app.wiki_content', 'app.wiki_content_version', 'app.wiki_redirect','app.workflow'
   );
 
-  function setUp() {
+  public function setUp() {
     $this->loadFixtures(
 		'Project', 'Tracker', 'User', 'Version', 'IssueCategory', 'TimeEntry', 
 		'Issue', 'IssueStatus', 'Enumeration', 'CustomValue', 'CustomField', 
@@ -26,7 +26,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
     $this->data = $this->Issue->read(null, 1);
   }
 
-  function test_activity_without_subprojects() {
+  public function test_activity_without_subprojects() {
     $User =& ClassRegistry::init('User');
     $user = $User->find_by_id_logged(2);
 
@@ -38,7 +38,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
     $this->assertTrue(in_array(7, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
   }
   
-  function test_activity_with_subprojects() {
+  public function test_activity_with_subprojects() {
     $User =& ClassRegistry::init('User');
     $user = $User->find_by_id_logged(2);
 
@@ -54,7 +54,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
     $this->assertTrue(in_array(6, Set::flatten(Set::extract('{n}.{n}.{n}.Issue.id', $events))));
   }
 
-  function test_global_activity() {
+  public function test_global_activity() {
     $User =& ClassRegistry::init('User');
     $user = $User->find_by_id_logged(2);
 
