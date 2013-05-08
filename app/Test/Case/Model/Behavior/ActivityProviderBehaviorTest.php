@@ -15,7 +15,7 @@ class ActivityProviderBehaviorTest extends CakeTestCase {
       'app.wiki', 'app.wiki_page', 'app.wiki_content', 'app.wiki_content_version', 'app.wiki_redirect','app.workflow'
   );
 
-  function startTest() {
+  function setUp() {
     $this->loadFixtures(
 		'Project', 'Tracker', 'User', 'Version', 'IssueCategory', 'TimeEntry', 
 		'Issue', 'IssueStatus', 'Enumeration', 'CustomValue', 'CustomField', 
